@@ -17,7 +17,7 @@
         "null",
         "number"
       ],
-      "multipleOf": 1e-10
+      "multipleOf": 1e-100
     },
     "line_items": {
       "$ref": "definitions.json#/line_items"
