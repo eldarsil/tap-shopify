@@ -1,5 +1,35 @@
 # Changelog
 
+## 1.3.1
+  * Canonicalize `Timestamp` to `timestamp` on `Transactions.receipt` [#98](https://github.com/singer-io/tap-shopify/pull/98)
+
+## 1.3.0
+  This version ships both [#96][PR#96] and [#97][PR#97].
+
+  From [#97][PR#97]:
+  * removes the "untestable streams" list from all tests.
+  * makes the test match the tap and expect the default page size to be 175, not 250
+  * adds bookmarking to order_refunds
+  * adds bookmarking to transactions
+  * adds shopify error handling to transactions
+    * The tests would fail with unhandled 429s
+  * adds pagination to transactions
+
+  From [#96][PR#96]:
+  * Update the API version from `2020-10` to `2021-04`
+
+  [PR#97]: https://github.com/singer-io/tap-shopify/pull/97/
+  [PR#96]: https://github.com/singer-io/tap-shopify/pull/96
+
+## 1.2.10
+  * Add `null, object` to customer schema definition [#94](https://github.com/singer-io/tap-shopify/pull/94)
+
+## 1.2.9
+  * Bumps `singer-python` from `5.11.0` to `5.12.1` [#91](https://github.com/singer-io/tap-shopify/pull/91)
+
+## 1.2.8
+  * Modified schema so that all fields using `multipleOf` are now using `singer.decimal` [#88](https://github.com/singer-io/tap-shopify/pull/88)
+
 ## 1.2.7
   * Change how exceptions are logged to make the error messages more consistent [#84](https://github.com/singer-io/tap-shopify/pull/84)
 
