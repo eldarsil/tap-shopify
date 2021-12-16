@@ -1,5 +1,30 @@
 # Changelog
 
+## 1.5.0
+  * Adds `events` stream [#127](https://github.com/singer-io/tap-shopify/pull/127)
+
+## 1.4.0
+  * Add shop info in record [#115](https://github.com/singer-io/tap-shopify/pull/115)
+  * Add inventory item data [#118] (https://github.com/singer-io/tap-shopify/pull/118)
+  * Add Locations stream and TDL-13614: Add Inventory Levels stream [#114] (https://github.com/singer-io/tap-shopify/pull/114)
+  * Added best practices [#116] (https://github.com/singer-io/tap-shopify/pull/116)
+  * Discover mode should check token [#120] (https://github.com/singer-io/tap-shopify/pull/120)
+## 1.3.6
+  * Fixes a bug in the canonicalize function for a 'receipt' key existing with a null value [#119](https://github.com/singer-io/tap-shopify/pull/119)
+
+## 1.3.5
+  * Add `status` field to `Products` stream [#108](https://github.com/singer-io/tap-shopify/pull/108)
+
+## 1.3.4
+  * Correct abandoned_checkouts schema to correctly reflect some properties as arrays [#44](https://github.com/singer-io/tap-shopify/pull/44)
+
+## 1.3.3.
+  * Add `build` to the list of fields we canonicalize for the Transactions stream [#103](https://github.com/singer-io/tap-shopify/pull/103)
+
+## 1.3.2
+  * Add `python_requires` to `setup.py` [#101](https://github.com/singer-io/tap-shopify/pull/101)
+    * We've tested the tap on `python 3.5.2` and `python 3.8.0`
+
 ## 1.3.1
   * Canonicalize `Timestamp` to `timestamp` on `Transactions.receipt` [#98](https://github.com/singer-io/tap-shopify/pull/98)
 

@@ -43,7 +43,7 @@ class BaseTapTest(unittest.TestCase):
             'shop': 'stitchdatawearhouse',
             'date_window_size': 30,
             # BUG: https://jira.talendforge.org/browse/TDL-13180
-            'results_per_page': '50'
+            # 'results_per_page': '50'
         }
 
         if original:
@@ -98,13 +98,33 @@ class BaseTapTest(unittest.TestCase):
                 self.REPLICATION_METHOD: self.INCREMENTAL,
                 self.API_LIMIT: self.DEFAULT_RESULTS_PER_PAGE},
             "products": default,
+            "inventory_items": {self.REPLICATION_KEYS: {"updated_at"},
+                self.PRIMARY_KEYS: {"id"},
+                self.REPLICATION_METHOD: self.INCREMENTAL,
+                self.API_LIMIT: 250},
             "metafields": meta,
             "transactions": {
                 self.REPLICATION_KEYS: {"created_at"},
                 self.PRIMARY_KEYS: {"id"},
                 self.FOREIGN_KEYS: {"order_id"},
                 self.REPLICATION_METHOD: self.INCREMENTAL,
-                self.API_LIMIT: self.DEFAULT_RESULTS_PER_PAGE}
+                self.API_LIMIT: self.DEFAULT_RESULTS_PER_PAGE},
+            "locations": {
+                self.REPLICATION_KEYS: {"updated_at"},
+                self.PRIMARY_KEYS: {"id"},
+                self.REPLICATION_METHOD: self.INCREMENTAL,
+                self.API_LIMIT: 0},
+            "inventory_levels": {
+                self.REPLICATION_KEYS: {"updated_at"},
+                self.PRIMARY_KEYS: {"location_id", "inventory_item_id"},
+                self.REPLICATION_METHOD: self.INCREMENTAL,
+                self.API_LIMIT: self.DEFAULT_RESULTS_PER_PAGE},
+            "events": {
+                self.REPLICATION_KEYS: {"created_at"},
+                self.PRIMARY_KEYS: {"id"},
+                self.REPLICATION_METHOD: self.INCREMENTAL,
+                self.API_LIMIT: 50
+            }
         }
 
     def expected_streams(self):
@@ -277,5 +297,5 @@ class BaseTapTest(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.start_date = self.get_properties().get("start_date")
-        self.store_1_streams = {'custom_collections', 'orders', 'products', 'customers'}
-        self.store_2_streams = {'abandoned_checkouts', 'collects', 'metafields', 'transactions', 'order_refunds', 'products'}
+        self.store_1_streams = {'custom_collections', 'orders', 'products', 'customers', 'locations', 'inventory_levels', 'inventory_items', 'events'}
+        self.store_2_streams = {'abandoned_checkouts', 'collects', 'metafields', 'transactions', 'order_refunds', 'products', 'locations', 'inventory_levels', 'inventory_items', 'events'}
